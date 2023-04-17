@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // 实现一个节流函数
+        // 开始为false，设值一个定时器后改为true
+        // 为true的这段时间（定时器时间）函数不可执行
+        // 定时器回调函数执行后，在重新计时
+        function throttle(fn, delay = 300) {
+            let isThrottle = false
+
+            return function(...args) {
+                if (!isThrottle) {
+                    isThrottle = true
+                    
+                    setTimeout(() => {
+                        isThrottle = false
+                        fn.apply(this, args)
+                    }, delay)
+                }
+            }
+        }
+
+        window.onresize = throttle(function(event) {
+            console.log(event)
+        }, 300)
+
+        
+        // 闭包加函数作为返回值
+        // 这里理解一下函数作为返回值参数时如何传递的！
+        function app(fn) {
+
+            // fnn 就是等于这个返回值函数
+            return function(...a) {
+                console.log(...a)
+
+                fn(1)
+            }
+        }
+
+        let fnn = app(function(x) {
+            console.log(x)
+        })
+        fnn(1,2)
+    </script>
+</body>
+</html>
