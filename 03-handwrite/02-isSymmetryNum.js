@@ -16,4 +16,4 @@ function isSymmetryNum(start, end) {
     return res
 }
 
-console.log(isSymmetryNum(1, 1000));
+console.log(isSymmetryNum(1, 1000))

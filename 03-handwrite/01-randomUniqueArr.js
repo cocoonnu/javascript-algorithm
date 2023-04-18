@@ -6,7 +6,7 @@ function randomUniqueArr(len, min, max) {
     }
 
     const hash = []
-    while (hash.length <= len) {
+    while (hash.length < len) {
         let flag = Math.floor(Math.random() * max)
         if (flag < min) continue
 
@@ -18,4 +18,4 @@ function randomUniqueArr(len, min, max) {
     return hash
 }
 
-console.log(randomUniqueArr(20, 10, 31));
+console.log(randomUniqueArr(2, 10, 31));
