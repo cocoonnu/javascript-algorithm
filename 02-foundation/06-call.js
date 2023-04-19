@@ -8,7 +8,6 @@ function testFunc(a, b) {
     console.log('this.name :>> ', this.name);
 }
 
-// @ts-ignore
 Function.prototype.callFn = function(context, ...args) {
     if (context == undefined || context == null) context = window
     context.__fn = this
@@ -17,5 +16,4 @@ Function.prototype.callFn = function(context, ...args) {
     return res
 }
 
-// @ts-ignore
 testFunc.callFn(object, 1, 2)

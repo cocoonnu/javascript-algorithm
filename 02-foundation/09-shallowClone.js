@@ -13,3 +13,21 @@ function shallowClone(obj) {
 }
 
 // 或者 Object.assign({}, obj)
+
+const sobj = {
+    name: '双越',
+    info: {
+        city: '北京'
+    },
+    arr: [10, 20, 30]
+}
+
+// const sobj1 = shallowClone(sobj)
+const sobj1 = Object.assign({}, sobj)
+
+sobj.name = 'cocoon'
+console.log(sobj1);
+
+sobj.info.city = 'ss'
+console.log(sobj1);
+

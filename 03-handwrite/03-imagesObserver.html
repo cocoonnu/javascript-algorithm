@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img
+        src="https://img9.doubanio.com/view/group_topic/l/public/p515054046.webp" 
+        data-src="https://avatars.githubusercontent.com/u/114394346?v=4"
+    >
+
+    <script>
+        // 图片懒加载 使用Intersection Observer实现
+        const images = document.querySelectorAll("img")
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                // 判断当前元素是否可见
+                if (entry.isIntersecting) {
+                    // 创建一个自定义属性data-src存放真正要显示的图片路径，原本img自带的src放一张默认图片
+                    const img = entry.target
+                    const data_src = img.getAttribute('data-src')
+                    img.setAttribute('src', data_src)
+                    // 解除观察，有几张图片就触发几次
+                    observer.unobserve(img)
+                }
+            })
+        })
+
+        images.forEach(image => {
+            // 对每一个图片对象进行观察
+            observer.observe(image)
+        })        
+    </script>
+</body>
+</html>
