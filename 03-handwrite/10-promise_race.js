@@ -1,12 +1,15 @@
-promise_race = function(promiseArr) {
+// Promise.race：结果为promise数组里第一个完成的promise的状态（无论成功失败）
+function promise_race(promiseArr) {
 
-    if (typeof promiseArr[Symbol.iterator] !== 'function') {
-        throw (`传入的参数不是一个可迭代对象`)
+    if (typeof plist[Symbol.iterator] != 'function') {
+        throw new Error('参数不是一个可迭代对象')
     }
 
     return new Promise((resolve, reject) => {
         for (let i = 0; i < promiseArr.length; i++) {
-            promiseArr[i].then(resolve, reject)
+
+            const promise = promiseArr[i]
+            Promise.resolve(promise).then(resolve, reject)
         };
     })
 }

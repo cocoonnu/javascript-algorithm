@@ -1,8 +1,8 @@
 // 手写promise.all功能
 function promise_all(plist) {
 
-    if (typeof plist[Symbol.iterator] !== 'function') {
-        throw (`传入的参数不是一个可迭代对象`)
+    if (typeof plist[Symbol.iterator] != 'function') {
+        throw new Error('参数不是一个可迭代对象')
     }
 
     return new Promise(function(resolve, reject) {
@@ -10,7 +10,12 @@ function promise_all(plist) {
         const result = []
 
         for (let index = 0; index < plist.length; index++) {
-            plist[index].then(function(value) {
+
+            // 获取单个promise
+            // 使用Promise.resolve避免plist[index]不是一个promise而导致.then报错
+            const promise = plist[index]
+
+            Promise.resolve(promise).then(function(value) {
                 count++
                 result[index] = value // 按顺序存储结果value
 
@@ -20,6 +25,7 @@ function promise_all(plist) {
             }).catch(function(err) {
                 reject(err)
             })
+
         }
     })
 }
