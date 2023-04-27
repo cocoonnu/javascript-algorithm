@@ -37,4 +37,5 @@ function matchBracket(str) {
 console.log(matchBracket('{a(b[c]d)e}f'))
 console.log(matchBracket('{a(b[c]d)ef'))
 console.log(matchBracket('{a(b[c]d}e)f'))
+
 console.log(matchBracket(''))
