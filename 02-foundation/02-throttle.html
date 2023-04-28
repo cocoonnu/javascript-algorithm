@@ -16,7 +16,7 @@
         function throttle(fn, delay = 300) {
             let isThrottle = false
 
-            return function(...args) {
+            return (...args) => {
                 if (!isThrottle) {
                     isThrottle = true
                     
@@ -29,7 +29,7 @@
         }
 
         window.onresize = throttle(function(event) {
-            console.log(event)
+            console.log(this)
         }, 300)
 
         

@@ -11,8 +11,7 @@
     <input type="text" id="searchElement">
 
     <script>
-        // 实现一个防抖函数： n 秒后在执行该事件，若在 n 秒内被重复触发，则重新计时
-        // 事件响应函数在一段时间后再执行，如果这段时间内再次调用，则重新计算执行时间
+        // 实现一个防抖函数： n秒后在执行该事件，若在n秒内被重复触发，则重新计时
 
         const searchElement = document.getElementById('searchElement')
 
@@ -31,10 +30,7 @@
         searchElement.oninput = debounce(function() {
             console.log(searchElement.value)
         }, 1000)
-        
-        let a = new Array([1,2])
-        let a1 = new a.constructor()
-        console.log(a1);        
+
     </script>
 </body>
 
