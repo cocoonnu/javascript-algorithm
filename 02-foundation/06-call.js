@@ -1,6 +1,5 @@
-// 
 Function.prototype.callFn = function(context, ...args) {
-    if (context == undefined || context == null) context = window
+    if (context == undefined || context == null) context = global
     context.__fn = this
     let res = context.__fn(...args)
     delete context.__fn
@@ -18,3 +17,4 @@ function testFunc(a, b) {
 }
 
 testFunc.callFn(object, 1, 2)
+testFunc.callFn(undefined, 1, 2)

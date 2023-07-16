@@ -1,6 +1,6 @@
 // 深拷贝：深拷贝开辟一个新的栈，两个对象属完成相同，但是对应两个不同的地址，
 // 修改一个对象的属性，不会改变另一个对象的属性
-
+ 
 // 使用循环递归的方式实现
 const deepClone = (target, map = new WeakMap()) => {
 
@@ -30,7 +30,7 @@ const deepClone = (target, map = new WeakMap()) => {
 
 // 对象
 const obj = {
-    name: '双越',
+    name: 'cocoon',
     info: {
         city: '北京'
     },
