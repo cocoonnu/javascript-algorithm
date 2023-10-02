@@ -1,25 +1,25 @@
 // 实现自定义new操作符
 
 function _new(constructor) {
-    const obj = {}
-    obj.__proto__ = constructor.prototype
+  const obj = {}
+  obj.__proto__ = constructor.prototype
 
-    let res = constructor.call(obj)
-    return (typeof res == 'object' && res != null) ? res : obj
+  let res = constructor.call(obj)
+  return (typeof res == 'object' && res != null) ? res : obj
 }
 
 // 有return
 function test() {
-    this.name = 'cocoon'
+  this.name = 'cocoon'
 
-    return {
-        name: 'co'
-    }
+  return {
+    name: 'co'
+  }
 }
 
 // 无return
 function test2() {
-    this.name = 'cocoon'
+  this.name = 'cocoon'
 }
 
 let obj = _new(test)

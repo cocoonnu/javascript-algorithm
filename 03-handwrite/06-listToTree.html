@@ -9,37 +9,78 @@
 <body>
     <script>
         // 列表转化为树结构
-        function listToTree(data) {
-            const list = []
+        // function listToTree(data) {
+        //     const list = []
 
-            data.forEach(element => {
-                const childrenArr = data.filter(item => {
-                    return element.id == item.pid
-                })
+        //     data.forEach(element => {
+        //         const childrenArr = data.filter(item => {
+        //             return element.id == item.pid
+        //         })
 
-                if (childrenArr.length > 0) {
-                    element.children = childrenArr
-                }
+        //         if (childrenArr.length > 0) {
+        //             element.children = childrenArr
+        //         }
 
-                if (element.pid == 0) {
-                    list.push(element)
-                }
-            })
+        //         if (element.pid == 0) {
+        //             list.push(element)
+        //         }
+        //     })
 
-            return list
-        }
+        //     return list
+        // }
 
-        let arr = [
-            { id: 1, name: '部门1', pid: 0 },
-            { id: 2, name: '部门2', pid: 1 },
-            { id: 3, name: '部门3', pid: 1 },
-            { id: 4, name: '部门4', pid: 3 },
-            { id: 5, name: '部门5', pid: 4 },
-            { id: 6, name: '部门6', pid: 0 },
-        ]
+        // let arr = [
+        //     { id: 1, name: '部门1', pid: 0 },
+        //     { id: 2, name: '部门2', pid: 1 },
+        //     { id: 3, name: '部门3', pid: 1 },
+        //     { id: 4, name: '部门4', pid: 3 },
+        //     { id: 5, name: '部门5', pid: 4 },
+        //     { id: 6, name: '部门6', pid: 0 },
+        // ]
 
-        const ans = listToTree(arr)
-        console.log(ans)        
+        // const ans = listToTree(arr)
+        // console.log(ans)        
+        const data = [
+                ["apiReceiveCode", "API 接收结果的编码", "string"],
+                ["apiReceiveMsg", "API 接收结果的说明", "string"],
+                ["apiRequestId", "短信 API 发送返回的唯一请求 ID", "string"],
+                ["apiSendCode", "短信 API 发送结果的编码", "string"],
+                ["apiSendMsg", "短信 API 发送失败的提示", "string"],
+                ["apiSerialNo", "短信 API 发送返回的序号", "string"],
+                ["apiTemplateId", "短信 API 的模板编号", "string"],
+                ["channelCode", "短信渠道编码", "string"],
+                ["channelId", "短信渠道编号", "integer"],
+                ["createTime", "创建时间", "string"],
+                ["id", "编号", "integer"],
+                ["mobile", "手机号", "string"],
+                ["receiveStatus", "接收状态", "integer"],
+                ["receiveTime", "接收时间", "string"],
+                ["sendCode", "发送结果的编码", "integer"],
+                ["sendMsg", "发送结果的提示", "string"],
+                ["sendStatus", "发送状态", "integer"],
+                ["sendTime", "发送时间", "string"],
+                ["templateCode", "模板编码", "string"],
+                ["templateContent", "短信内容", "string"],
+                ["templateId", "模板编号", "integer"],
+                ["templateParams", "短信参数", "object"],
+                ["templateType", "短信类型", "integer"],
+                ["userId", "用户编号", "integer"],
+                ["userType", "用户类型", "integer"]
+            ]
+
+            const result = []
+            for (let index = 0; index < data.length; index++) {
+                const item = data[index]
+                const element = {
+                    "type": "FORM_TYPE.input",
+                    "field": item[0],
+                    "label": item[1],
+                    "readOnly": true,
+                    "optional": true
+                };
+                result.push(element)
+            }
+            console.log('', result)
     </script>
 </body>
 </html>

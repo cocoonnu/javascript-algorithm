@@ -1,37 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>防抖</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>防抖</title>
 </head>
 
 <body>
-    <input type="text" id="searchElement">
+  <input type="text" id="searchElement">
 
-    <script>
-        // 实现一个防抖函数： n秒后在执行该事件，若在n秒内被重复触发，则重新计时
+  <script>
+    // 实现一个防抖函数： n秒后在执行该事件，若在n秒内被重复触发，则重新计时
 
-        const searchElement = document.getElementById('searchElement')
+    const searchElement = document.getElementById('searchElement')
 
-        function debounce(fn, delay = 300) {
-            let timer = null
+    function debounce(fn, delay = 300) {
+      let timer = null
 
-            return function(...args) {
-                clearTimeout(timer)
+      return function (...args) {
+        clearTimeout(timer)
 
-                timer = setTimeout(() => {
-                    fn.apply(this, args)
-                }, delay)
-            }
-        }
+        timer = setTimeout(() => {
+          fn.apply(this, args)
+        }, delay)
+      }
+    }
 
-        searchElement.oninput = debounce(function() {
-            console.log(searchElement.value)
-        }, 1000)
+    searchElement.oninput = debounce(function () {
+      console.log(searchElement.value)
+    }, 1000)
 
-    </script>
+  </script>
 </body>
 
 </html>
